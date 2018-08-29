@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../css/base/mui.css" />
+	<link rel="stylesheet" href="../../css/base/iconfont.css" />
+	<link rel="stylesheet" href="../../css/base/pullToRefresh.css" rel="external nofollow">
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="self.css" />
+	<title></title>
+	<style>
+		body{
+			background: #eee;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">我的订单</h1>
+	</header>
+	<div class="mui-content">
+		<div id="slider" class="mui-slider">
+			<div style="background: #eee;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1mobile">
+						全部订单
+					</a>
+					<a class="mui-control-item" href="#item2mobile">
+						待发货
+					</a>
+					<a class="mui-control-item" href="#item3mobile">
+						待收货
+					</a>
+					<a class="mui-control-item" href="#item4mobile">
+						已完成
+					</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3" ></div>
+			</div>
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div id="item1" class="item">
+								<ul class="content-ul"  v-if="List.length > 0" >
+									<!--订单列表-->
+									<li v-for="(v,k) of List"><!--v-for="(v,k) of List"-->
+										<div class="order_bianhao">
+											<p>订单编号：{{v.order_sn}}</p>
+											<p>
+												{{fns.status(v.pay_status,v.shipping_status,v.order_status)}}
+											</p>
+										</div>
+										<!--订单商品列表-->
+										<div class="">
+											<div class="order_goods_list" v-for="(vv,kk) of v.goods_list">
+												<div >
+													<img :src="API.url1+vv.goods_img"/>
+												</div>
+												<div class="goods_info">
+													<p class="mui-ellipsis">{{vv.goods_name}}</p>
+													<p class="mui-ellipsis">{{vv.spec_key_name}}</p>
+													<p>￥{{vv.final_price}}</p>
+													<p>数量 {{vv.goods_num}}</p>
+												</div>
+											</div>
+										</div>
+										<div class="order_btn">
+											<p class="order_count">
+												<span>￥{{v.total_amount}} </span>
+												<span>共{{v.count_goods_num}}件</span>
+												<span v-if="v.integral_money > 0">积分抵扣:{{v.integral_money}}</span>
+											</p>
+											<p class="order_btn_">  
+												<qu-xiao-ding-dan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0" :order_id="v.order_id"></qu-xiao-ding-dan>
+												<li-ji-fu-kuan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0"  :order_id="v.order_id"></li-ji-fu-kuan>
+												<cha-kan-wu-liu v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></cha-kan-wu-liu>
+												<que-ren-shou-huo v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></que-ren-shou-huo>
+											</p>
+										</div>
+									</li>
+								</ul>
+								<div v-else class="defined_img">
+									<img src="../../img/defined.jpg" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div id="item2" class="item">
+								<ul class="content-ul" v-if="List.length > 0" >
+									<!--订单列表-->
+									<li v-for="(v,k) of List"><!--v-for="(v,k) of List"-->
+										<div class="order_bianhao">
+											<p>订单编号：{{v.order_sn}}</p>
+											<p>
+												{{fns.status(v.pay_status,v.shipping_status,v.order_status)}}
+											</p>
+										</div>
+										<!--订单商品列表-->
+										<div class="">
+											<div class="order_goods_list" v-for="(vv,kk) of v.goods_list">
+												<div >
+													<img :src="API.url1+vv.goods_img"/>
+												</div>
+												<div class="goods_info">
+													<p class="mui-ellipsis">{{vv.goods_name}}</p>
+													<p class="mui-ellipsis">{{vv.spec_key_name}}</p>
+													<p>￥{{vv.final_price}}</p>
+													<p>数量 {{vv.goods_num}}</p>
+												</div>
+											</div>
+										</div>
+										<div class="order_btn">
+											<p class="order_count">
+												<span>￥{{v.total_amount}} </span>
+												<span>共{{v.count_goods_num}}件</span>
+												<span v-if="v.integral_money > 0">积分抵扣:{{v.integral_money}}</span>
+											</p>
+											<p class="order_btn_">  
+												<qu-xiao-ding-dan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0" :order_id="v.order_id"></qu-xiao-ding-dan>
+												<li-ji-fu-kuan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0"  :order_id="v.order_id"></li-ji-fu-kuan>
+												<cha-kan-wu-liu v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></cha-kan-wu-liu>
+												<que-ren-shou-huo v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></que-ren-shou-huo>
+											</p>
+										</div>
+									</li>
+								</ul>
+								<div v-else class="defined_img">
+									<img src="../../img/defined.jpg" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="item3mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll3" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div id="item3" class="item">
+								<ul class="content-ul"  v-if="List.length > 0" >
+									<!--订单列表-->
+									<li v-for="(v,k) of List"><!--v-for="(v,k) of List"-->
+										<div class="order_bianhao">
+											<p>订单编号：{{v.order_sn}}</p>
+											<p>
+												{{fns.status(v.pay_status,v.shipping_status,v.order_status)}}
+											</p>
+										</div>
+										<!--订单商品列表-->
+										<div class="">
+											<div class="order_goods_list" v-for="(vv,kk) of v.goods_list">
+												<div >
+													<img :src="API.url1+vv.goods_img"/>
+												</div>
+												<div class="goods_info">
+													<p class="mui-ellipsis">{{vv.goods_name}}</p>
+													<p class="mui-ellipsis">{{vv.spec_key_name}}</p>
+													<p>￥{{vv.final_price}}</p>
+													<p>数量 {{vv.goods_num}}</p>
+												</div>
+											</div>
+										</div>
+										<div class="order_btn">
+											<p class="order_count">
+												<span>￥{{v.total_amount}} </span>
+												<span>共{{v.count_goods_num}}件</span>
+												<span v-if="v.integral_money > 0">积分抵扣:{{v.integral_money}}</span>
+											</p>
+											<p class="order_btn_">  
+												<qu-xiao-ding-dan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0" :order_id="v.order_id"></qu-xiao-ding-dan>
+												<li-ji-fu-kuan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0"  :order_id="v.order_id"></li-ji-fu-kuan>
+												<cha-kan-wu-liu v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></cha-kan-wu-liu>
+												<que-ren-shou-huo v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></que-ren-shou-huo>
+											</p>
+										</div>
+									</li>
+								</ul>
+								<div v-else class="defined_img">
+									<img src="../../img/defined.jpg" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="item4mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll4" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div id="item4" class="item">
+								<ul class="content-ul" v-if="List.length > 0" >
+									<!--订单列表-->
+									<li v-for="(v,k) of List"><!--v-for="(v,k) of List"-->
+										<div class="order_bianhao">
+											<p>订单编号：{{v.order_sn}}</p>
+											<p>
+												{{fns.status(v.pay_status,v.shipping_status,v.order_status)}}
+											</p>
+										</div>
+										<!--订单商品列表-->
+										<div class="">
+											<div class="order_goods_list" v-for="(vv,kk) of v.goods_list">
+												<div >
+													<img :src="API.url1+vv.goods_img"/>
+												</div>
+												<div class="goods_info">
+													<p class="mui-ellipsis">{{vv.goods_name}}</p>
+													<p class="mui-ellipsis">{{vv.spec_key_name}}</p>
+													<p>￥{{vv.final_price}}</p>
+													<p>数量 {{vv.goods_num}}</p>
+												</div>
+											</div>
+										</div>
+										<div class="order_btn">
+											<p class="order_count">
+												<span>￥{{v.total_amount}} </span>
+												<span>共{{v.count_goods_num}}件</span>
+												<span v-if="v.integral_money > 0">积分抵扣:{{v.integral_money}}</span>
+											</p>
+											<p class="order_btn_">  
+												<qu-xiao-ding-dan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0" :order_id="v.order_id"></qu-xiao-ding-dan>
+												<li-ji-fu-kuan v-if="v.pay_status == 0 && order_status == 0 && shipping_status == 0"  :order_id="v.order_id"></li-ji-fu-kuan>
+												<cha-kan-wu-liu v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></cha-kan-wu-liu>
+												<que-ren-shou-huo v-if="v.pay_status == 1 && v.shipping_status == 1 && v.order_status == 1"  :order_id="v.order_id"></que-ren-shou-huo>
+											</p>
+										</div>
+									</li>
+								</ul>
+								<div v-else class="defined_img">
+									<img src="../../img/defined.jpg" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    
+	</div>
+
+<script src="../../js/base/jquery.min.js"></script>
+<script src="../../js/base/mui.js"></script>
+<script src="../../js/base/mui.pullToRefresh.js"></script>
+<script src="../../js/base/mui.pullToRefresh.material.js"></script>
+<script src="../../js/base/castapp.js"></script>
+<script src="../../js/base/vue.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/mop-lqs.js"></script>
+<link rel="stylesheet" href="../../css/plug/mop-lqs.css" />
+<script src="item1.js"></script>
+<script src="item2.js"></script>
+<script src="item3.js"></script>
+<script src="item4.js"></script>
+<script src="self.js"></script>
+<style>
+	html{
+		background: #eee;
+	}
+</style>
+<script>
+	mui.init();
+	ca.init();
+	var item1;
+	var item2;
+	var item3;
+	var item4;
+		
+	//接收刷新页面事件
+	window.addEventListener('Refresh',function(){
+		
+	})
+	
+</script>
+</body>
+</html>

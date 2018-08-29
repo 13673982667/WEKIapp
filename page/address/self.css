@@ -1,0 +1,46 @@
+html, body {
+	background: initial;
+}
+.mui-title{
+	color: #666;
+}
+.mui-bar-nav {
+     box-shadow: 0 1px 6px #ccc!important; 
+     -webkit-box-shadow: 0 1px 6px #ccc!important;
+}
+.mui-content{
+	padding-top: 64px!important;
+}
+.list{
+	
+}
+.list li {
+	position: relative; 
+	padding: 15px;
+}
+.list li::after{
+	position: absolute; 
+    right: 0;
+    bottom: 0;
+    left: 15px;
+    height: 1px;
+    content: ' ';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc;
+}
+.add{
+	background: #000035;
+	position: absolute;
+	bottom: 10px;
+	left: 10%;
+	right: 10%;
+	height: 35px;
+	border-radius: 15px;
+	color: #ccc;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: .3rem;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../css/base/mui.css" />
+	<link rel="stylesheet" href="../../css/base/iconfont.css" />
+	<link rel="stylesheet" href="../../css/base/pullToRefresh.css" rel="external nofollow">
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="self.css" />
+	<title></title>
+	<style>
+		body{
+			background: #eee;
+		}
+	</style>
+</head>
+<body>
+	<div class="mui-content">
+		<div id="slider" class="mui-slider">
+			<div style="background: #eee;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1mobile">
+						积分兑换
+					</a>
+					<!--<a class="mui-control-item" href="#item2mobile">
+						积分+金额 
+					</a>-->
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-12" ></div>
+			</div>
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div id="item1" class="">
+								
+								<!--<div class="mop-load-7" v-show="List.length <= 0" style="height: 100vh; padding-top: 30%;"></div>-->
+								<div v-show="List.length >= 0" class=" iconfont icon" 
+									:class="{'icon-list':show == 'icon-list','icon-list1':show == 'icon-list1'}"></div> 
+								
+								<ul class="" :class="{'list':show == 'icon-list','list1':show == 'icon-list1'}">
+									<li v-for="(v,k) of List" :goods_id="v.goods_id"><!--v-for="(v,k) of List"-->
+										<div class="goods-img">
+											<img  :src="API.url1+v.original_img" alt=""  /> 
+										</div>
+										<div class="goods_info">
+											<p class="goods_name mui-ellipsis-2" >{{v.goods_name}}</p>
+											<p class="prices">参考价：￥{{v.market_price}}</p>
+											<!--<p class="sc_pri">换购价：￥{{(v.shop_price - v.exchange_integral / point_rate).toFixed(2)}}+{{ v.exchange_integral }}积分</p>-->
+											<p class="sc_pri">换购价：{{ v.exchange_integral }}积分</p>
+											
+										</div>
+									</li>
+								</ul>
+								
+							</div>
+							 
+						</div>
+					</div>
+					<div class="item1Top mui-icon mui-icon mui-icon-arrowup">
+						
+					</div>
+				</div>
+				<!--<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div id="item2">
+								2
+							</div>
+						</div>
+					</div>
+
+				</div>-->
+
+			</div>
+		</div>
+	    
+	</div>
+
+<script src="../../js/base/jquery.min.js"></script>
+<script src="../../js/base/mui.js"></script>
+<script src="../../js/base/mui.pullToRefresh.js"></script>
+<script src="../../js/base/mui.pullToRefresh.material.js"></script>
+<script src="../../js/base/castapp.js"></script>
+<script src="../../js/base/vue.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/mop-lqs.js"></script>
+<link rel="stylesheet" href="../../css/plug/mop-lqs.css" />
+<script src="item1.js"></script>
+<script src="item2.js"></script>
+<script src="self.js"></script>
+<style>
+	html{
+		background: #eee;
+	}
+</style>
+<script>
+	mui.init();
+	ca.init();
+	var item1;
+	var item2;
+	$('.item1Top').hide();
+	
+	document.addEventListener('plusready',function(){
+		var scroll = mui('#scroll1').scroll();
+		document.querySelector('#scroll1' ).addEventListener('scroll', function (e ) {
+	      	if(scroll.y < '-200'){
+	      		$('.item1Top').show();
+	      	}else{
+	      		$('.item1Top').hide();
+	      		
+	      	}
+	    })
+	})
+	//接收刷新页面事件
+	window.addEventListener('Refresh',function(){
+		//获取列表  正在预约的
+		fns.getList();
+	})
+	$('.item1Top').on('tap',function(){
+		mui('#scroll1').scroll().scrollTo(0,0,100);
+	})
+</script>
+</body>
+</html>

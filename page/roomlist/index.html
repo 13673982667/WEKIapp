@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../css/base/mui.css" />
+	<title></title>
+	<script src="../../js/base/jquery.min.js"></script>
+	<script src='../../js/plug/back/prefixfree.min.js'></script>
+	<link rel="stylesheet" href="self.css" />
+	<style class="cp-pen-styles">
+		html,body{
+			height: 100vh; 
+			width: 100vw;
+			overflow: hidden;
+			position: relative; 
+		}
+	body {
+		height: 100vh; 
+		width: 100vw;
+	  background: radial-gradient(200% 100% at bottom center, #0070aa, #0b2570, #000035, #000);
+	  background: radial-gradient(220% 105% at top center, #000 10%, #000035 40%, rgb(4,13,73) 65%, rgb(4,13,73));
+	  background-attachment: fixed;
+	  overflow: hidden;
+	}
+
+	@keyframes rotate {
+	  0% {
+	    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+	  }
+	  100% {
+	    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+	  }
+	}
+	.stars {
+	  transform: perspective(500px);
+	  transform-style: preserve-3d;
+	  position: absolute;
+	  bottom: 0;
+	  perspective-origin: 50% 100%;
+	  left: 50%;
+	  animation: rotate 90s infinite linear;
+	}
+
+	.star {
+	  width: 2px;
+	  height: 2px;
+	  background: #F7F7B6;
+	  position: absolute;
+	  top: 0; 
+	  left: 0;
+	  transform-origin: 0 0 -300px; 
+	  transform: translate3d(0, 0, -300px);
+	  backface-visibility: hidden;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="mui-content" id="app">
+	    <ul class="mui-table-view content-list">
+	            <li class="mui-table-view-cell" v-for="(v,k) of List" :id="v.id" @click="handleClick(k)">
+	                <a class="mui-navigate-right">
+	                    {{v.name}}
+	                </a>
+	            </li>
+	             
+	        </ul>
+	</div>
+	<div class="stars"></div>
+	<script src='../../js/plug/back/stopExecutionOnTimeout.js'></script>
+<script src="../../js/base/mui.js"></script>
+<script src="../../js/base/castapp.js"></script>
+
+<script src="../../js/base/vue.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="self.js"></script>
+
+<script>
+	mui.init();
+	mui.plusReady(function(){
+		plus.navigator.setStatusBarStyle('light');
+	})
+	
+</script>
+</body>
+</html>

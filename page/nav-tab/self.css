@@ -1,0 +1,29 @@
+nav{
+	/*background: #0062CC!important;*/
+	/*background:url(../../img/back.jpg);*/ 
+	background: rgba(4,13,73,1)!important;
+	background-size: 100% 150%;
+	/*background: initial;*/
+	/*background-position-y: -5px;*/
+	border: 0!important;
+	box-shadow: 0,0,0 #000 !important;
+
+} 
+.mui-bar{
+	border: 0!important;
+	box-shadow: 0 0 0 #000 !important;
+}
+.mui-bar-tab{
+	height: 51px!important;
+}
+nav a{
+	/*color: rgb(12,9,17)!important;*/
+	color:#fff;
+}
+.mui-active{
+	color: #fff!important;
+}
+html,body{
+	background: rgba(4,13,73,1)!important;
+
+}

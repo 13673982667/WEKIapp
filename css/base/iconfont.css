@@ -1,0 +1,23 @@
+@font-face {font-family: "iconfont";
+    src:url('../fonts/iconfont.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    src:url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAATUAAsAAAAABzgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY82UhVY21hcAAAAYAAAABLAAABcOeLttNnbHlmAAABzAAAAR8AAAFAqtEi+mhlYWQAAALsAAAALwAAADYSVXjzaGhlYQAAAxwAAAAcAAAAJAfeA4NobXR4AAADOAAAAAgAAAAICAAAAGxvY2EAAANAAAAABgAAAAYAoAAAbWF4cAAAA0gAAAAgAAAAIAEQAH9uYW1lAAADaAAAAUUAAAJtPlT+fXBvc3QAAASwAAAAIwAAADRJUtnheJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeJT9LZm7438AQw9zA0AAUZgTJAQDsnQypeJxjYGBgZWBgYAZiHSBmYWBgDGFgZAABP6AoI1icmYELLM7CoARWwwISf5b8/z+MBPJZwCQDIxvDKOABkzJQHjisIJiBEQAbDwr1AHicNYw9TsNAFIR31vYm0kabTRTbTf68Ky0EEWMrjq006bBAShr6FGnSgyiQEDfgCFQUETeg4xzQRJQcIGUC2EFITzPzvfc0xCbk59HaWrfkhITkitwQguQMphgdxYGqg1WyxGVu0kEXvpdmXWR/OkWGwA8cZbJxFCdGMTeKPVZgmTvwmA5xNA5cAT+Ki2ujxXSgzLhx+G20PD+YoiRtbSks+7kq9k+iurYBSlfz/qJnlu320vQW/fmK7r7oxcPujX7ORlT6kk5eJgcfzdIc1h3y05oUfH/MRbENFX1XoeT03nHA7A/ONw4rem0GnBdlVGot/3U1R2W90UrU6vWaGQ5N6UJp5OlgkObXkn+/imZT4JLLMpsYiE1J5BcYaTV0AHicY2BkYGAAYrbDl5fE89t8ZeBmYQCB67OlqhH0/x4WBuYSIJeDgQkkCgApVwoPAHicY2BkYGBu+N/AEMPCAAJAkpEBFTABAEcIAmsEAAAABAAAAAAAAAAAoAAAAAEAAAACAHMABAAAAAAAAgAAAAoACgAAAP8AAAAAAAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICJkYmRmYGruCS/KDU+Mzk/j4EBACNFBFUA') format('woff'),
+
+}
+
+ .iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px ;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+
+}
+.icon-list:before { content: "\e70d"; }
+
+.icon-wodedingdan:before { content: "\e646"; }
+
+.icon-list1:before { content: "\e67b"; }
+
+.icon-icon-geren:before { content: "\e60a"; }
+
+.icon-store_icon:before { content: "\e663"; }
+

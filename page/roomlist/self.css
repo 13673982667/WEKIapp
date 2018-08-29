@@ -1,0 +1,21 @@
+.mui-content > .mui-table-view:first-child {
+     margin-top:50px!important; 
+     /*background: rgba(0,0,21,.9);*/
+}
+.mui-content{
+	background: initial;
+}
+.content-list{
+	background: initial;
+	width: 70%;
+	margin: 0 auto;
+	color: #fff;
+}    
+.content-list li{
+	position: relative;
+    overflow: hidden;
+    padding: 11px 15px;
+}
+.mui-active{
+	background: rgba(255,255,255,.1)!important;
+}

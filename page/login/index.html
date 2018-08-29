@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../css/base/mui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="self.css" />
+	<title></title>
+	<script src="../../js/base/jquery.min.js"></script>
+	<script src='../../js/plug/back/prefixfree.min.js'></script>
+	<style > 
+	
+	html,body{
+			height: 100vh; 
+			width: 100vw; 
+			overflow: hidden;
+			position: relative; 
+		}
+	body {
+		height: 100vh; 
+		width: 100vw;
+	  background: radial-gradient(200% 100% at bottom center, #0070aa, #0b2570, #000035, #000);
+	  background: radial-gradient(220% 105% at top center, #000 10%, #000035 40%, rgb(4,13,73) 65%, rgb(4,13,73));
+	  background-attachment: fixed;
+	  overflow: hidden;
+	}
+	@keyframes rotate {
+	  0% {
+	    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+	  }
+	  100% {
+	    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+	  }
+	}
+	.stars {
+	  transform: perspective(500px);
+	  transform-style: preserve-3d;
+	  position: absolute;
+	  bottom: 0;
+	  perspective-origin: 50% 100%;
+	  left: 50%;
+	  animation: rotate 90s infinite linear;
+	}
+
+	.star {
+	  width: 2px;
+	  height: 2px;
+	  background: #F7F7B6;
+	  position: absolute;
+	  top: 0; 
+	  left: 0;
+	  transform-origin: 0 0 -300px; 
+	  transform: translate3d(0, 0, -300px);
+	  backface-visibility: hidden;
+	}
+	
+	</style>
+	<div class="stars"></div>
+	<script src='../../js/plug/back/stopExecutionOnTimeout.js'></script>
+	
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">登陆</h1>
+	</header>
+	<div class="mui-content" id="app" v-show="ready">
+		<form id='login-form' class="mui-input-group">
+			<!--<div class="mui-input-row"> 
+				<label>昵称</label>
+				<input id='nickname' v-model="nickname"  type="text" class="mui-input-clear mui-input" placeholder="请输入昵称">
+			</div> -->
+			<div class="mui-input-row"> 
+				<label>手机</label>
+				<input id='phone' v-model="phone"  type="text" class="mui-input-clear mui-input" placeholder="请输入手机号">
+			</div> 
+			<div class="mui-input-row">
+				<label>验证码</label>
+				<input id='code' v-model="code"  type="text" class="mui-input-clear mui-input" placeholder="请输入验证码">
+				<span class="getcode" v-show="isCode">{{Time}}秒</span>
+				<span class="getcode" v-show="!isCode" @click="getCode">点击获取验证码</span>
+			</div>
+		</form>
+		 
+		<div class="mui-content-padded">
+			<button id='login' v-show="isBtn" @click="Btn" class="mui-btn mui-btn-block mui-btn-primary login-yes">登录</button>
+			<button id='login' v-show="!isBtn" class="mui-btn mui-btn-block mui-btn-gray login-no">登录</button>
+			
+			</div>
+		</div>
+		<div class="mui-content-padded oauth-area">
+
+		</div>
+	</div>
+<script src="../../js/base/mui.js"></script>
+<script src="../../js/base/castapp.js"></script>
+<script src="../../js/base/vue.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="self.js"></script> 
+<script>
+	mui.init({
+		swipeBack:false //关闭右滑关闭功能
+	});
+	ca.init();
+	var back = mui.back;
+	mui.back = function(){
+		  
+	} 
+</script> 
+</body>
+</html>

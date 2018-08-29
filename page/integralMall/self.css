@@ -1,0 +1,135 @@
+.mui-content{
+	padding-top: 20px;
+
+}
+#slider{
+	height: 100%;
+}
+
+#sliderSegmentedControl{
+	background: #fff;
+}
+
+.mui-slider-group{
+	height: 100%;
+}
+.mui-slider-group,.mui-scroll-wrapper{
+	height: 100%;
+}
+#item1,#item2{
+	min-height: calc(100vh - 100px); 
+}
+.icon{
+	color:#ccc;
+	position: fixed;
+	right: 20px;
+	top: 10px;
+	font-size: 25px;
+	z-index: 999;
+}
+.item1Top{
+	width: 40px;
+	height: 40px;
+	background: #eee;
+	position: fixed;
+	bottom: 100px;
+	right: 20px;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	color: #232326;
+
+}
+.item1Top::before{
+}
+.list{
+	
+}
+
+.list li{
+	position: relative;
+	display: flex;
+	padding: 15px;
+	background: #fff;
+}
+.list li::after{
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 15px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc;
+}
+.list .goods-img{
+	width: 30vw!important;
+	flex-shrink:0;
+}
+.list .goods-img img{
+	width: 30vw!important;
+	height: 30vw!important;
+	display: inline-block;
+	
+}
+.list .goods_info{
+	padding: 0 15px;
+	flex-grow:0;
+}
+.list .goods_info p{
+	margin: 0 0 15px 0;
+}
+.list .goods_name{
+	-webkit-line-clamp:3
+}
+
+.list1{
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+
+}
+.list1 li{
+	width: 50%;
+	background: #fff;
+	position: relative;
+	padding: 10px 10px 15px 10px;
+}
+.list1 li::after{
+	position: absolute;
+    right: 5px;
+    bottom: 0;
+    left: 5px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc;
+}
+.list1 .goods-img{
+	position: relative;
+    width: 100%;
+	
+	display: inline-block;
+}
+.list1 .goods-img:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.list1 .goods-img img {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 20px);
+}
+.goods_name{
+	color:#000;
+	font-size: 12px;
+	line-height: 12px;
+	max-height: 36px;
+}

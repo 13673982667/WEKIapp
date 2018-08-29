@@ -1,0 +1,54 @@
+{
+	"page/nav-tab/nav-tab.html": {
+		"refer": [
+			"page/login/index.html",
+			"page/roomlist/index.html",
+			"page/my/index.html",
+			"page/goods/index.html",
+			"page/integralMall/index.html"
+		],
+		"resources": [
+			"page/roomlist/index.html",
+			"page/nav-tab/self.js"
+		]
+	},
+	"page/roomlist/index.html": {
+		"refer": [
+			"page/room/index.html"
+		]
+	},
+	"page/my/index.html": {
+		"refer": [
+			"page/my/gerenziliao/index.html",
+			"page/gerenziliao/index.html",
+			"page/address/index.html",
+			"page/order/index.html"
+		]
+	},
+	"page/integralMall/index.html": {
+		"resources": [
+			"js/base/mui.pullToRefresh.js",
+			"js/base/mui.pullToRefresh.material.js"
+		],
+		"refer": [
+			"page/goods_info/index.html",
+			"page/integralMallInfo/index.html"
+		]
+	},
+	"page/address/index.html": {
+		"refer": [
+			"page/address_edit/index.html"
+		]
+	},
+	"page/integralMallInfo/index.html": {
+		"refer": [
+			"page/tianxiedingdan/index.html"
+		]
+	},
+	"page/tianxiedingdan/index.html": {
+		"refer": [
+			"page/address/index.html",
+			"page/order/index.html"
+		]
+	}
+}

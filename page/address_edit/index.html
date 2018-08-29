@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="../../css/base/mui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="self.css" />
+	<!--<link rel="stylesheet" href="../../css/base/mui.picker.min.css" />-->
+	<title></title>
+	
+</head>
+<body>
+					
+	<div id="app" >
+		<template v-if="ready">
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">{{address_id ? '编辑' : '添加'}}收货地址</h1>
+		    <a class="mui-icon  mui-icon-trash mui-pull-right" @click="delClick" v-show="address_id"></a>
+		    
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+		   		<div class="mui-input-row"> 
+					<label>收货人:</label>
+					<input id='consignee' v-model="consignee"  type="text" class="mui-input-clear mui-input" placeholder="请输入收货人">
+				</div> 
+				<div class="mui-input-row"> 
+					<label>手机号码:</label>
+					<input id='mobile' v-model="mobile"  type="text" class="mui-input-clear mui-input" placeholder="请输入手机号码">
+				</div> 
+				<div class="mui-input-row region" > 
+					<label style="flex-shrink:0;">所在地区:</label>
+					<select name="" v-model="province" @click="selClick">
+						<option value="0">省</option>
+						<option v-for="(v,k) of provinceArr" :value="k">{{v}}</option>
+					</select>
+					<select name=""  v-model="city">
+						<option value="0">市</option>
+						<option v-for="(v,k) of cityArr" :value="k">{{v}}</option>
+					</select>
+					<select name="" v-model="district">
+						<option value="0">地区</option>
+						<option v-for="(v,k) of districtArr" :value="k">{{v}}</option>
+					</select>
+					<!--<div class="">
+						
+						{{province}}
+						{{city}}
+						{{district}}
+					</div>-->
+					<!--<a class="mui-navigate-right"></a>-->
+				</div> 
+				<div class="mui-input-row" > 
+					<label>详细地址:</label>
+					<input id='address' v-model="address"  type="text" class="mui-input-clear mui-input" placeholder="请输入详细地址">
+				</div> 
+				<div class="mui-input-row" @click="morenClick"> 
+					<label for="checkbox1">设为默认地址:</label>
+					<!-- 简洁模式开关关闭状态 -->
+					<div class="mui-switch mui-switch-mini" v-show="!moren">
+					  <div class="mui-switch-handle"></div>
+					</div>
+					<!-- 简洁模式开关打开状态 -->
+					<div  v-show="moren" class="mui-switch mui-switch-blue mui-switch-mini mui-active">
+					  <div class="mui-switch-handle"></div>
+					</div>
+				</div> 
+				
+			</form>
+			<div class="btn">
+				<button type="button" @click="btnClick" class="mui-btn mui-btn-primary">保存该地址</button>
+				
+			</div> 
+		</div>
+		</template>
+	</div>
+
+<script src="../../js/base/mui.js"></script>
+<script src="../../js/base/castapp.js"></script>
+<script src="../../js/base/jquery.min.js"></script>
+<!--<script src="../../js/base/mui.picker.min.js"></script>-->
+<script src="../../js/base/vue.js"></script>
+<script src="../../js/common/common.js"></script>
+<script src="../../js/common/mop-lqs.js"></script>
+<script src="self.js"></script>
+<script>
+
+	var address_id = $_GET['address_id'] 
+	if(address_id){
+		fns.getaddressInfo()
+	}
+
+</script>
+</body>
+</html>
